@@ -1,0 +1,9 @@
+<h1>  <%= @user.name  %></h1>
+
+  <% @articles.each do |art| %>
+      <h1> Title: <%= art.title%></h1>
+      <p> URL:
+      <%=  art.url %></p>
+      <% end %>
+
+<h1>SHOW SITE HAS RENDERED</h1>

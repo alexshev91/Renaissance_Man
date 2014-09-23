@@ -6,4 +6,11 @@ class User < ActiveRecord::Base
   confirmation: true,
   length: {minimum: 6},
   on: :create
+
+
+  def self.authenticate name, password
+    User.find_by_name(name).try(:authenticate, password)
+  end
+
+
 end

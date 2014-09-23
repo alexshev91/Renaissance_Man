@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get '/signup', to: 'users#new'
+  get  '/renaissance', to: 'site#show'
+
+  get '*path', to: 'site#index'
+
 
 
 
