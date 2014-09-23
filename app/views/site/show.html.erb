@@ -1,7 +1,10 @@
 <h1>  <%= @user.name  %></h1>
 
   <% @articles.each do |art| %>
-      <h1> Title: <%= art.title%></h1>
+   	  <h2>************************
+   	    <%= art.category %>
+   	  ************************ </h2>
+      <h3> Title: <%= art.title%></h1>
       <p> URL:
       <%=  art.url %></p>
       <% end %>
