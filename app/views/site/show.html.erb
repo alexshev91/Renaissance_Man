@@ -1,55 +1,76 @@
+<style type="text/css">
+div {
+  text-align: center;
+}
 
+.circle {
+  line-height: 0;   /* remove line-height */ 
+  display: inline-block;  /* circle wraps image */
+  margin: 5px;
+  border: 2px solid black;
+  border-radius: 50%; /* relative value */
+  /*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+  transition: linear 0.25s;
+  height: 100px;
+  width: 75px;
+}
+</style>
+<!-- left sidebar -->
+<div class="col-md-2" style="height: 1000px; border: 1px solid black;">
 
-
+<% if @userLevel === 1 %>
+   <div class="circle"><img height="50" width="50" style="position: relative;" src="https://www.nanamee.com/upload/images/29728/29728_p.jpg"></div>
+<% elsif @userLevel === 2%>
+  <div class="circle"><img height="50" width="50" src="https://www.nanamee.com/upload/images/29605/29605_p.jpg"></div>
+<% end %>
 <h1>  <%= @user.name  %></h1>
-<a href="/logout">Logout</a>
+<a href="/logout">Logout</a><br>
         ART SCORE FOR THE USER:   <%= @user.art %>
         Your level is: <%= @userLevel %>
-<h2>Technology</h2>
+
+</div>
+
+<!-- begin displaying categories -->
+<div class="col-md-10">
+<h1 style="text-align: center;">
+  <b><u>Renaissance Man</b></u>
+
+
+<h2 style="border: 3px solid black;">Technology</h2>
+<div style="border: 1px solid #ccc; text-align: center;">        
   <% @technology.each do |tech| %>
-      <h3> Title: <%= tech.title%></h1>
-      <p> URL:
-      <%=  tech.url %></p>
+      <h3> <a target="_blank" href ="<%= tech.url %>"><%= tech.title  %></a></h3>
+    <% tech.comments.each do |com| %>
+      <p><%= com.content %></p>
+    <% end %>
+  <% @article = tech %>
 
-<% tech.comments.each do |com| %>
-         <ul>
-            <li>   <%= com.content %></li>
-         </ul>
-
-      <% end %>
-      <% @article = tech %>
-
-      <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
-      <% end %>
-
-
-  <h2>ART!!!</h2>
+  <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+  <% end %>
+</div>
+    <h1>SHOW SITE HAS RENDERED</h1>
+<div> THiS IS WHERE THE SIDEBAR WILL BE!
+</div>
+<div style="border: 1px solid #ccc; text-align: center;">
+  <h2 style="border: 3px solid black;">ART!!!</h2>
   <% @art.each do |a| %>
-      <h3> Title: <%= a.title%></h1>
-      <p> URL:
-      <%=  a.url %></p>
+    <h3> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h3>
   <% a.comments.each do |com| %>
-         <ul>
-            <li>   <%= com.content %></li>
-         </ul>
+            <p><%= com.content %></p>
 
       <% end %>
       <% @article = a %>
 
       <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
       <% end %>
-
-
-  <h2>MOVIES!!!</h2>
+</div>
+<div style="border: 1px solid #ccc; text-align: center;"> 
+  <h2 style="border: 3px solid black;">MOVIES!!!</h2>
   <% @movies.each do |a| %>
-      <h3> Title: <%= a.title%></h1>
-      <p> URL:
-      <%=  a.url %></p>
+      <h3> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h3>
 
   <% a.comments.each do |com| %>
-         <ul>
-            <li>   <%= com.content %></li>
-         </ul>
+            <p>   <%= com.content %></p>
 
       <% end %>
       <% @article = a %>
@@ -59,16 +80,14 @@
 
   <% end %>
 
-  <h2>science!!!</h2>
+</div>
+<div style="border: 1px solid #ccc; text-align: center;"> 
+  <h2 style="border: 3px solid black;">science!!!</h2>
   <% @science.each do |a| %>
-      <h3> Title: <%= a.title%></h1>
-      <p> URL:
-      <%=  a.url %></p>
+      <h3> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h3>
 
   <% a.comments.each do |com| %>
-         <ul>
-            <li>   <%= com.content %></li>
-         </ul>
+            <p>   <%= com.content %></p>
 
       <% end %>
       <% @article = a %>
@@ -78,5 +97,6 @@
 
 
   <% end %>
+</div>
+</div>
 
-<h1>SHOW SITE HAS RENDERED</h1>
