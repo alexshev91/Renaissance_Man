@@ -15,7 +15,9 @@ class SiteController < ApplicationController
       # @articles = Article.all
       @technology = Article.where(category: "technology")
       @art = Article.where(category: "art")
+
       @science = Article.where(category: "science")
+
       @movies = Article.where(category: "movies")
       @medicine = Article.where(category: "medicine")
     # end

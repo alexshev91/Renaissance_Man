@@ -40,6 +40,11 @@ desc "update the show database with the list"
  # 	art1 = Article.create({:url => "http://www.cinemablend.com" + movies.css('div.nnicontent a')[i]["href"], :title => movies.css('div.nnicontent a')[i].text, :category => "movies"})
 	# # puts movies.css('div.nnicontent a')[i].text
 
+	# movies = Nokogiri::HTML(open("http://www.cinemablend.com/news.php"))
+	# for i in 0..5 do
+ # 	art1 = Article.create({:url => "http://www.cinemablend.com" + movies.css('div.nnicontent a')[i]["href"], :title => movies.css('div.nnicontent a')[i].text, :category => "movies"})
+	# # puts movies.css('div.nnicontent a')[i].text
+
 	# end
 
 	# movies = Nokogiri::HTML(open("http://www.cinemablend.com/news.php"))
@@ -51,5 +56,5 @@ desc "update the show database with the list"
 
   end
 
-
 end
+
