@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         auth_user = User.authenticate(@user.name, @user.password)
         if auth_user
           session[:user_id] = @user.id
-          redirect_to user_path(@user.id), :notice => 'Profile created!'
+           redirect_to renaissance_path
         end
       else
         if User.find_by_name(@user.name)
