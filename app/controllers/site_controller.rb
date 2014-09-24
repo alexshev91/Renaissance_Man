@@ -3,6 +3,9 @@ class SiteController < ApplicationController
   before_action :is_authenticated?, except: [:index]
 
   def index
+     if session[:user_id] != nil
+      redirect_to renaissance_path
+     end
 
   end
 
