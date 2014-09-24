@@ -11,7 +11,7 @@ class SessionController < ApplicationController
     if @user
       session[:user_id] = @user.id
       # redirect_to user_path(@user.id), :notice => 'Logged in!'
-            redirect_to renaissance_path, :notice => 'Logged in!'
+            redirect_to root_path, :notice => 'Logged in!'
     else
       if User.find_by_name(params[:user][:name]) == nil
         redirect_to login_path, :alert => 'Account with that name does not exist.'

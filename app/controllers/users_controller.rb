@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def new
     if session[:user_id] != nil
-      redirect_to user_path(current_user.id)
+      redirect_to root_path
     else
       @user = User.new
     end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         auth_user = User.authenticate(@user.name, @user.password)
         if auth_user
           session[:user_id] = @user.id
-           redirect_to renaissance_path
+           redirect_to root_path
         end
       else
         if User.find_by_name(@user.name)
