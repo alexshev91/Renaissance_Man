@@ -11,11 +11,13 @@ class SiteController < ApplicationController
 
   def show
 
-    # if User.find(params[:user_id]) != @current_user
-    #   redirect_to user_path(current_user.id)
-    # else
+
+    if session[:user_id] == nil
+      redirect_to "site#index"
+
+    else
       @user = @current_user
-      # @articles = Article.all
+
       @technology = Article.where(category: "technology")
       @art = Article.where(category: "art")
 
@@ -47,8 +49,9 @@ class SiteController < ApplicationController
           @userLevel = 1
         else
           @userLevel = 0
-        end
-    # end
+      end
+
+    end
 
   end
 

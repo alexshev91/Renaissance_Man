@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 
-  root to: 'site#index'
+  root to: 'site#show'
 
 
   get "/login" => "session#new"
@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get  '/renaissance', to: 'site#show'
 
-  get '*path', to: 'site#index'
+  # get '*path', to: 'site#index'
+  get '*path', to: 'site#show'
 
 
 
