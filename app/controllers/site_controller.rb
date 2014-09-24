@@ -12,7 +12,12 @@ class SiteController < ApplicationController
     #   redirect_to user_path(current_user.id)
     # else
       @user = @current_user
-      @articles = Article.all
+      # @articles = Article.all
+      @technology = Article.where(category: "technology")
+      @art = Article.where(category: "art")
+      @science = Article.where(category: "science") 
+      @movies = Article.where(category: "movies")
+      @medicine = Article.where(category: "medicine")
     # end
 
   end
