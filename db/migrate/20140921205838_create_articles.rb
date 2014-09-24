@@ -5,6 +5,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :url
       t.string :category
 
+
       t.timestamps
     end
   end

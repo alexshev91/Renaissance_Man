@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get "/find_parent", to: "comments#find_parent"
+
   get '/signup', to: 'users#new'
   get  '/renaissance', to: 'site#show'
 

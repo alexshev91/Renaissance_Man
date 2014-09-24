@@ -1,12 +1,77 @@
-<h1>  <%= @user.name  %></h1>
 
-  <% @articles.each do |art| %>
-   	  <h2>************************
-   	    <%= art.category %>
-   	  ************************ </h2>
-      <h3> Title: <%= art.title%></h1>
+
+
+<h1>  <%= @user.name  %></h1>
+<h2>Technology</h2>
+  <% @technology.each do |tech| %>
+      <h3> Title: <%= tech.title%></h1>
       <p> URL:
-      <%=  art.url %></p>
+      <%=  tech.url %></p>
+<% tech.comments.each do |com| %>
+         <ul>
+            <li>   <%= com.content %></li>
+         </ul>
+
       <% end %>
+      <% @article = tech %>
+
+      <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+      <% end %>
+
+
+  <h2>ART!!!</h2>
+  <% @art.each do |a| %>
+      <h3> Title: <%= a.title%></h1>
+      <p> URL:
+      <%=  a.url %></p>
+  <% art.comments.each do |com| %>
+         <ul>
+            <li>   <%= com.content %></li>
+         </ul>
+
+      <% end %>
+      <% @article = a %>
+
+      <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+      <% end %>
+
+  <h2>MOVIES!!!</h2>
+  <% @movies.each do |a| %>
+      <h3> Title: <%= a.title%></h1>
+      <p> URL:
+      <%=  a.url %></p>
+
+  <% a.comments.each do |com| %>
+         <ul>
+            <li>   <%= com.content %></li>
+         </ul>
+
+      <% end %>
+      <% @article = a %>
+
+      <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+
+
+  <% end %>
+
+  <h2>science!!!</h2>
+  <% @science.each do |a| %>
+      <h3> Title: <%= a.title%></h1>
+      <p> URL:
+      <%=  a.url %></p>
+
+  <% a.comments.each do |com| %>
+         <ul>
+            <li>   <%= com.content %></li>
+         </ul>
+
+      <% end %>
+      <% @article = a %>
+
+      <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+
+
+
+  <% end %>
 
 <h1>SHOW SITE HAS RENDERED</h1>
