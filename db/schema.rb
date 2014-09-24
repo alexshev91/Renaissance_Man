@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140921210102) do
   create_table "comments", force: true do |t|
     t.integer  "article_id"
     t.text     "content"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,11 +35,11 @@ ActiveRecord::Schema.define(version: 20140921210102) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "password_digest"
-    t.integer  "technology"
-    t.integer  "art"
-    t.integer  "science"
-    t.integer  "medicine"
-    t.integer  "movies"
+    t.integer  "technology",      default: 0
+    t.integer  "art",             default: 0
+    t.integer  "science",         default: 0
+    t.integer  "medicine",        default: 0
+    t.integer  "movies",          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -3,11 +3,11 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :password_digest
-      t.integer :technology
-      t.integer :art
-      t.integer :science
-      t.integer :medicine
-      t.integer :movies
+      t.integer :technology, :default  => 0
+      t.integer :art, :default => 0
+      t.integer :science, :default  => 0
+      t.integer :medicine, :default  => 0
+      t.integer :movies, :default  => 0
 
       t.timestamps
     end
