@@ -3,6 +3,15 @@ div {
   text-align: center;
 }
 
+.cmnt {
+  margin: 0 auto;
+   width: 500px;
+   font-family: "Times New Roman" Times serif;
+   font-size: medium;
+}
+.error {
+  color: red;
+}
 .list-group-item {
   height: 50px;
   margin-top: 0px;
@@ -33,10 +42,16 @@ li {
 <!-- left sidebar -->
 <div class="col-md-2" style ="border: 1px solid #ccc;">
 
-<% if @userLevel >= 0 %>
+<% if @userLevel >= 0  && @userLevel < 2%>
    <div class="circle"><img height="50" width="50" style="margin-top: 13px;" src="https://www.nanamee.com/upload/images/29728/29728_p.jpg"></div>
 <% elsif @userLevel === 2%>
   <div class="circle"><img height="50" width="50"  style="margin-top: 13px;" src="https://www.nanamee.com/upload/images/29605/29605_p.jpg"></div>
+<% elsif @userLevel ===3 %>
+  <div class="circle" style="background-color: black;"><img height="50" width="50" style="margin-top: 13px;" src="https://c2.staticflickr.com/8/7182/6851856345_feba375e6b_z.jpg"></div>
+<% elsif @userLevel ===4 %>
+  <div class="circle" style="background-color: black;"><img height="50" width="50" style="margin-top: 13px;" src="http://fc06.deviantart.net/fs39/f/2008/342/d/f/Steampunk_8_bit_Jason_by_shrakakoom.gif"></div>
+  <% elsif @userLevel >=5 %>
+  <div class="circle" style="background-color: black;"><img height="50" width="50" style="margin-top: 13px;" src="http://piq.codeus.net/static/media/userpics/piq_20002_400x400.png"></div>
 <% end %>
 <h2>  <%= @user.name  %></h2>
       <h3>Level: <%= @userLevel %><h3>
@@ -93,7 +108,7 @@ li {
 <div class='commentdiv1' style="display: none;">
   <ul class="list-group">
     <% tech.comments.each do |com| %>
-      <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
+      <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><b><u><%= usr.name  %>: </u></b>   <%= com.content %></h4></div>
     <% end %>
   <% @article = tech %>
 
@@ -116,7 +131,7 @@ li {
   <div class='commentdiv1' style="display: none;">
     <ul class="list-group">
   <% a.comments.each do |com| %>
-            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
+            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><b><u><%= usr.name  %>: </u></b>   <%= com.content %></h4></div>
 
 
       <% end %>
@@ -142,10 +157,7 @@ li {
   <div class='commentdiv1' style="display: none;">
     <ul class="list-group">
   <% a.comments.each do |com| %>
-            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
-
-            <p> <%= com.inspect  %> </p>
-            <p> <%= com %>
+            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><b><u><%= usr.name  %>: </u></b>   <%= com.content %></h4></div>
 
       <% end %>
     </ul>
@@ -173,7 +185,7 @@ li {
   <div class='commentdiv1' style="display: none;">
     <ul class="list-group">
   <% a.comments.each do |com| %>
-            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
+            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><b><u><%= usr.name  %>: </u></b>   <%= com.content %></h4></div>
 
 
       <% end %>
@@ -201,7 +213,7 @@ li {
 <div class='commentdiv1' style="display: none;">
   <ul class="list-group">
     <% med.comments.each do |com| %>
-      <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
+      <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><b><u><%= usr.name  %>: </u></b>   <%= com.content %></h4></div>
     <% end %>
   <% @article = med %>
 
