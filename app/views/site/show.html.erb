@@ -1,55 +1,78 @@
+<style type="text/css">
+div {
+  text-align: center;
+}
 
+.circle {
+  line-height: 0;   /* remove line-height */ 
+  display: inline-block;  /* circle wraps image */
+  margin: 5px;
+  border: 2px solid #ccc;
+  border-radius: 50%; /* relative value */
+  /*box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+  transition: linear 0.25s;
+  height: 80px;
+  width: 75px;
+}
+</style>
+<!-- left sidebar -->
+<div class="col-md-2" style="height: 1000px; border: 1px solid #ccc;">
 
-
-<h1>  <%= @user.name  %></h1>
-<a href="/logout">Logout</a>
+<% if @userLevel === 1 %>
+   <div class="circle"><img height="50" width="50" style="margin-top: 13px;" src="https://www.nanamee.com/upload/images/29728/29728_p.jpg"></div>
+<% elsif @userLevel === 2%>
+  <div class="circle"><img height="50" width="50"  style="margin-top: 13px;" src="https://www.nanamee.com/upload/images/29605/29605_p.jpg"></div>
+<% end %>
+<h2>  <%= @user.name  %></h2>
+<a href="/logout">Logout</a><br>
         ART SCORE FOR THE USER:   <%= @user.art %>
         Your level is: <%= @userLevel %>
-<h2>Technology</h2>
+
+</div>
+
+<!-- begin displaying categories -->
+<div class="col-md-10">
+<h2 style="text-align: center;">
+  <b><u>Renaissance Man</b></u>
+
+
+<h3 style="border: 3px solid black;">Technology</h3>
+<div style="border: 1px solid #ccc; text-align: center;">        
   <% @technology.each do |tech| %>
-      <h3> Title: <%= tech.title%></h1>
-      <p> URL:
-      <%=  tech.url %></p>
+      <h4> <a target="_blank" href ="<%= tech.url %>"><%= tech.title  %></a></h4>
+    <% tech.comments.each do |com| %>
+      <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p> 
+    <% end %>
+  <% @article = tech %>
 
-<% tech.comments.each do |com| %>
-         <ul>
-            <li>   <%= com.content %></li>
-         </ul>
+  <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+  <% end %>
+</div>
 
-      <% end %>
-      <% @article = tech %>
-
-      <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
-      <% end %>
-
-
-  <h2>ART!!!</h2>
+<div style="border: 1px solid #ccc; text-align: center;">
+  <h3 style="border: 3px solid black;">ART!!!</h3>
   <% @art.each do |a| %>
-      <h3> Title: <%= a.title%></h1>
-      <p> URL:
-      <%=  a.url %></p>
+    <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
   <% a.comments.each do |com| %>
-         <ul>
-            <li>   <%= com.content %></li>
-         </ul>
+            <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+
 
       <% end %>
       <% @article = a %>
 
       <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
       <% end %>
-
-
-  <h2>MOVIES!!!</h2>
+</div>
+<div style="border: 1px solid #ccc; text-align: center;"> 
+  <h3 style="border: 3px solid black;">MOVIES!!!</h3>
   <% @movies.each do |a| %>
-      <h3> Title: <%= a.title%></h1>
-      <p> URL:
-      <%=  a.url %></p>
+      <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
 
   <% a.comments.each do |com| %>
-         <ul>
-            <li>   <%= com.content %></li>
-         </ul>
+            <p>    <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>  <%= com.content %></p>
+
+            <p> <%= com.inspect  %> </p>
+            <p> <%= com %>
 
       <% end %>
       <% @article = a %>
@@ -59,16 +82,15 @@
 
   <% end %>
 
-  <h2>science!!!</h2>
+</div>
+<div style="border: 1px solid #ccc; text-align: center;"> 
+  <h3 style="border: 3px solid black;">science!!!</h3>
   <% @science.each do |a| %>
-      <h3> Title: <%= a.title%></h1>
-      <p> URL:
-      <%=  a.url %></p>
+      <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
 
   <% a.comments.each do |com| %>
-         <ul>
-            <li>   <%= com.content %></li>
-         </ul>
+            <p>    <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+
 
       <% end %>
       <% @article = a %>
@@ -78,5 +100,18 @@
 
 
   <% end %>
+</div>
+<h3 style="border: 3px solid black;">Medicine</h3>
+<div style="border: 1px solid #ccc; text-align: center;">        
+  <% @medicine.each do |med| %>
+      <h4> <a target="_blank" href ="<%= med.url %>"><%= med.title  %></a></h4>
+    <% med.comments.each do |com| %>
+      <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+    <% end %>
+  <% @article = med %>
 
-<h1>SHOW SITE HAS RENDERED</h1>
+  <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+  <% end %>
+</div>
+</div>
+

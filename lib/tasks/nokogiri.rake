@@ -35,17 +35,18 @@ desc "update the show database with the list"
 
 	end
 
-	# movies = Nokogiri::HTML(open("http://www.cinemablend.com/news.php"))
-	# for i in 0..5 do
- # 	art1 = Article.create({:url => "http://www.cinemablend.com" + movies.css('div.nnicontent a')[i]["href"], :title => movies.css('div.nnicontent a')[i].text, :category => "movies"})
-	# # puts movies.css('div.nnicontent a')[i].text
+	art = Nokogiri::HTML(open("http://www.huffingtonpost.com/news/art-news/"))
+	for i in 0..4 do
+ 	art1 = Article.create({:url => art.css('div.entry_right h3 a')[i]["href"], :title => art.css('div.entry_right h3 a')[i].text, :category => "art"})
+	# puts art.css('div.entry_right h3 a')[i].text
+	end
 
-	# movies = Nokogiri::HTML(open("http://www.cinemablend.com/news.php"))
-	# for i in 0..5 do
- # 	art1 = Article.create({:url => "http://www.cinemablend.com" + movies.css('div.nnicontent a')[i]["href"], :title => movies.css('div.nnicontent a')[i].text, :category => "movies"})
-	# # puts movies.css('div.nnicontent a')[i].text
-
-	# end
+	medicine = Nokogiri::HTML(open("http://www.sciencedaily.com/news/health_medicine/"))
+	for i in 0..4 do
+ 	art1 = Article.create({:url => "http://www.sciencedaily.com/news/health_medicine/" + medicine.css('ul#featured_shorts a')[i]["href"], :title => medicine.css('ul#featured_shorts a')[i].text, :category => "medicine"})
+	# puts science.css('div.nnicontent a')[i].text
+	# puts "http://www.sciencedaily.com" + science.css('ul#heroes_hero_shorts a')[i]["href"]
+	end
 
 	# movies = Nokogiri::HTML(open("http://www.cinemablend.com/news.php"))
 	# for i in 0..5 do
