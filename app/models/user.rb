@@ -12,5 +12,8 @@ class User < ActiveRecord::Base
     User.find_by_name(name).try(:authenticate, password)
   end
 
+  def score
+  	(self.technology + self.science + self.medicine + self.art + self.movies)
+  end
 
 end
