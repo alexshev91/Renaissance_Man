@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
     # @user = @current_user
     # old_cat_score = @user.cat
     # @user.cat = old_cat_score + 5
+    
     new_params = comment_params
     new_params[:user_id] = @user.id
     @parent.comments.create(new_params)
