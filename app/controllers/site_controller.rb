@@ -20,6 +20,7 @@ class SiteController < ApplicationController
 
       @technology = Article.where(category: "technology")
       @art = Article.where(category: "art")
+      @scoreboard = User.all.sort{|a,b| a.score <=> b.score}
 
       @science = Article.where(category: "science")
 
