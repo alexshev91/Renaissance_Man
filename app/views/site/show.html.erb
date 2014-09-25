@@ -4,7 +4,7 @@ div {
 }
 
 .circle {
-  line-height: 0;   /* remove line-height */ 
+  line-height: 0;   /* remove line-height */
   display: inline-block;  /* circle wraps image */
   margin: 5px;
   border: 2px solid #ccc;
@@ -37,15 +37,22 @@ div {
 
 
 <h3 style="border: 3px solid black;">Technology</h3>
-<div style="border: 1px solid #ccc; text-align: center;">        
+<div style="border: 1px solid #ccc; text-align: center;">
   <% @technology.each do |tech| %>
       <h4> <a target="_blank" href ="<%= tech.url %>"><%= tech.title  %></a></h4>
+
+<button class='commentbutton1'>click to view/hide comments</button>
+
+
+<div class='commentdiv1' style="display: none;">
     <% tech.comments.each do |com| %>
-      <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p> 
+      <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
     <% end %>
   <% @article = tech %>
 
   <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+</div>
+
   <% end %>
 </div>
 
@@ -53,6 +60,10 @@ div {
   <h3 style="border: 3px solid black;">ART!!!</h3>
   <% @art.each do |a| %>
     <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
+
+  <button class='commentbutton1'>click to view/hide comments</button>
+
+  <div class='commentdiv1' style="display: none;">
   <% a.comments.each do |com| %>
             <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
 
@@ -61,13 +72,17 @@ div {
       <% @article = a %>
 
       <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+      </div>
       <% end %>
 </div>
-<div style="border: 1px solid #ccc; text-align: center;"> 
+<div style="border: 1px solid #ccc; text-align: center;">
   <h3 style="border: 3px solid black;">MOVIES!!!</h3>
   <% @movies.each do |a| %>
       <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
 
+      <button class='commentbutton1'>click to view/hide comments</button>
+
+  <div class='commentdiv1' style="display: none;">
   <% a.comments.each do |com| %>
             <p>    <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>  <%= com.content %></p>
 
@@ -78,16 +93,20 @@ div {
       <% @article = a %>
 
       <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+  </div>
 
-
+  </p>
   <% end %>
 
 </div>
-<div style="border: 1px solid #ccc; text-align: center;"> 
+<div style="border: 1px solid #ccc; text-align: center;">
   <h3 style="border: 3px solid black;">science!!!</h3>
   <% @science.each do |a| %>
       <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
 
+      <button class='commentbutton1'>click to view/hide comments</button>
+
+  <div class='commentdiv1' style="display: none;">
   <% a.comments.each do |com| %>
             <p>    <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
 
@@ -96,21 +115,27 @@ div {
       <% @article = a %>
 
       <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
-
+  </div>
 
 
   <% end %>
 </div>
 <h3 style="border: 3px solid black;">Medicine</h3>
-<div style="border: 1px solid #ccc; text-align: center;">        
+<div style="border: 1px solid #ccc; text-align: center;">
   <% @medicine.each do |med| %>
       <h4> <a target="_blank" href ="<%= med.url %>"><%= med.title  %></a></h4>
+
+<button class='commentbutton1'>click to view/hide comments</button>
+
+<div class='commentdiv1' style="display: none;">
     <% med.comments.each do |com| %>
       <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
     <% end %>
   <% @article = med %>
 
   <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
+</div>
+
   <% end %>
 </div>
 </div>
