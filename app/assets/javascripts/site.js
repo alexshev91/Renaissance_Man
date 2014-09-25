@@ -23,6 +23,7 @@ $(document).ready(function(){
         // alert(data.content);
         // debugger;
         post.prepend("<div class=\"well well-sm\">" + data.name + data.content + "</div >");
+        text = post.find("textarea").val("");
       });
   });
 

@@ -47,21 +47,46 @@ li {
       <h4>Movies <%= @user.movies %> </h4>
 <a href="/logout">Logout</a><br>
         ART SCORE FOR THE USER:   <%= @user.art %>
-        
+
         <h2>Scoreboard</h2>
         <ol>
         <% @scoreboard.each do |u| %>
 
         <li><%= u.name  %>
         <span class="badge"><%= u.score %></span></li>
-        <% end %> 
-        </ol>   
+        <% end %>
+        </ol>
 </div>
 
 <!-- begin displaying categories -->
 <div class="col-md-10">
 <h2 style="text-align: center;">
   <b><u>Renaissance Man</b></u>
+
+
+<!-- open the tabs ul -->
+<ul id="myTab" class="nav nav-tabs" role="tablist">
+<li class="active"><a href="#technology" role="tab" data-toggle="tab">Technology</a></li>
+<li><a href="#art" role="tab" data-toggle="tab">Art</a></li>
+<li><a href="#movies" role="tab" data-toggle="tab">Movies</a></li>
+<li><a href="#science" role="tab" data-toggle="tab">Science</a></li>
+<li><a href="#medicine" role="tab" data-toggle="tab">Medicine</a></li>
+</ul>
+
+
+<div class="tab-content">
+
+
+<!-- fix this -->
+ <div class="tab-pane active" id="technology">...</div>
+  <div class="tab-pane" id="art">TESTING TABSSSS</div>
+  <div class="tab-pane" id="movies">...</div>
+  <div class="tab-pane" id="science">...</div>
+  <div class="tab-pane" id="medicine">...</div>
+
+<!-- end fix this -->
+
+
 
 
 <h3 style="border: 3px solid black;">Technology</h3>
@@ -83,7 +108,7 @@ li {
 </div>
 
   <% end %>
-</div>  
+</div>
 <div style="border: 1px solid #ccc; text-align: center;">
   <h3 style="border: 3px solid black;">ART!!!</h3>
   <% @art.each do |a| %>
@@ -175,3 +200,6 @@ li {
 </div>
 </div>
 
+
+<!-- close the "tab-content div" -->
+</div>
