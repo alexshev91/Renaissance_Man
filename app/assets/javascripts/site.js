@@ -22,7 +22,7 @@ $(document).ready(function(){
       ).success(function(data) {
         // alert(data.content);
         // debugger;
-        post.prepend("<div class=\"well well-sm\" style=\"margin: 0 auto; width: 100%;\">" + data.name + data.content + "</div >");
+        post.prepend("<div class=\"well well-sm\" style=\"margin: 0 auto; width: 100%;\">" + data.name +" "+ data.content + "</div >");
         text = post.find("textarea").val("");
       });
   });

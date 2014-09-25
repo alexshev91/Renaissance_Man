@@ -116,7 +116,7 @@ li {
   <div class='commentdiv1' style="display: none;">
     <ul class="list-group">
   <% a.comments.each do |com| %>
-            <li class="list-group-item"><% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></li>
+            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
 
 
       <% end %>
@@ -142,7 +142,7 @@ li {
   <div class='commentdiv1' style="display: none;">
     <ul class="list-group">
   <% a.comments.each do |com| %>
-            <li class="list-group-item"><% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>  <%= com.content %></li>
+            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
 
             <p> <%= com.inspect  %> </p>
             <p> <%= com %>
@@ -173,7 +173,7 @@ li {
   <div class='commentdiv1' style="display: none;">
     <ul class="list-group">
   <% a.comments.each do |com| %>
-            <li class="list-group-item"><% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></li>
+            <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
 
 
       <% end %>
@@ -201,7 +201,7 @@ li {
 <div class='commentdiv1' style="display: none;">
   <ul class="list-group">
     <% med.comments.each do |com| %>
-      <li class="list-group-item"><% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></li>
+      <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
     <% end %>
   <% @article = med %>
 
