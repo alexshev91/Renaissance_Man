@@ -1,4 +1,7 @@
+
+ <div class ="sgnup">
 <%= form_for @user do |f| %>
+
 
   <div class="form-group">
     <%= f.label :name %>
@@ -15,8 +18,9 @@
     <%= f.label :password_confirmation %>:
     <%= f.password_field :password_confirmation, class: "form-control"%>
   </div>
-  <div class="form-group">
+  <div class="form-group butn">
    <%= f.submit "Save Profile", class: "form-control btn btn-default" %>
   </div>
 
 <% end %>
+</div>
