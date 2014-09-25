@@ -41,8 +41,7 @@ div {
   <% @technology.each do |tech| %>
       <h4> <a target="_blank" href ="<%= tech.url %>"><%= tech.title  %></a></h4>
     <% tech.comments.each do |com| %>
-      <p><%= com.content %></p>
-      <p><%= com.inspect  %> </p>
+      <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p> 
     <% end %>
   <% @article = tech %>
 
@@ -55,7 +54,8 @@ div {
   <% @art.each do |a| %>
     <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
   <% a.comments.each do |com| %>
-            <p><%= com.content %></p>
+            <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+
 
       <% end %>
       <% @article = a %>
@@ -69,7 +69,8 @@ div {
       <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
 
   <% a.comments.each do |com| %>
-            <p>   <%= com.content %></p>
+            <p>    <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>  <%= com.content %></p>
+
             <p> <%= com.inspect  %> </p>
             <p> <%= com %>
 
@@ -88,7 +89,8 @@ div {
       <h4> <a target="_blank" href ="<%= a.url %>"><%= a.title  %></a></h4>
 
   <% a.comments.each do |com| %>
-            <p>   <%= com.content %></p>
+            <p>    <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+
 
       <% end %>
       <% @article = a %>
@@ -104,7 +106,7 @@ div {
   <% @medicine.each do |med| %>
       <h4> <a target="_blank" href ="<%= med.url %>"><%= med.title  %></a></h4>
     <% med.comments.each do |com| %>
-      <p><%= com.content %></p>
+      <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
     <% end %>
   <% @article = med %>
 
