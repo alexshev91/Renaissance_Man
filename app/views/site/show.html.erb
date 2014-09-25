@@ -65,7 +65,7 @@ li {
 
 
 <!-- open the tabs ul -->
-<ul id="myTab" class="nav nav-tabs" role="tablist">
+<ul id="myTab" class="nav nav-pills" role="tablist">
 <li class="active"><a href="#technology" role="tab" data-toggle="tab">Technology</a></li>
 <li><a href="#art" role="tab" data-toggle="tab">Art</a></li>
 <li><a href="#movies" role="tab" data-toggle="tab">Movies</a></li>
@@ -77,18 +77,11 @@ li {
 <div class="tab-content">
 
 
-<!-- fix this -->
- <div class="tab-pane active" id="technology">...</div>
-  <div class="tab-pane" id="art">TESTING TABSSSS</div>
-  <div class="tab-pane" id="movies">...</div>
-  <div class="tab-pane" id="science">...</div>
-  <div class="tab-pane" id="medicine">...</div>
-
-<!-- end fix this -->
 
 
 
 
+ <div class="tab-pane active" id="technology">
 <h3 style="border: 3px solid black;">Technology</h3>
 <div style="border: 1px solid #ccc; text-align: center;">
   <% @technology.each do |tech| %>
@@ -100,7 +93,7 @@ li {
 <div class='commentdiv1' style="display: none;">
   <ul class="list-group">
     <% tech.comments.each do |com| %>
-      <div class="well well-sm"><% uid = com.user_id %><% usr = User.find(uid) %> <h3><%= usr.name  %>   <%= com.content %></h3></div>
+      <div class="well well-sm" style="margin: 0 auto;"><% uid = com.user_id %><% usr = User.find(uid) %> <h4><%= usr.name  %>   <%= com.content %></h4></div>
     <% end %>
   <% @article = tech %>
 
@@ -109,6 +102,10 @@ li {
 
   <% end %>
 </div>
+</div>
+
+<!-- ART!!!! -->
+<div class="tab-pane" id="art">
 <div style="border: 1px solid #ccc; text-align: center;">
   <h3 style="border: 3px solid black;">ART!!!</h3>
   <% @art.each do |a| %>
@@ -130,6 +127,11 @@ li {
       </div>
       <% end %>
 </div>
+</div>
+
+
+<!-- MOVIES! -->
+<div class="tab-pane" id="movies">
 <div style="border: 1px solid #ccc; text-align: center;">
   <h3 style="border: 3px solid black;">MOVIES!!!</h3>
   <% @movies.each do |a| %>
@@ -156,6 +158,11 @@ li {
   <% end %>
 
 </div>
+</div>
+
+
+<!-- SCIENCE! -->
+<div class="tab-pane" id="science">
 <div style="border: 1px solid #ccc; text-align: center;">
   <h3 style="border: 3px solid black;">science!!!</h3>
   <% @science.each do |a| %>
@@ -179,6 +186,11 @@ li {
 
   <% end %>
 </div>
+</div>
+
+<!-- MEDICINE -->
+
+<div class="tab-pane" id="medicine">
 <h3 style="border: 3px solid black;">Medicine</h3>
 <div style="border: 1px solid #ccc; text-align: center;">
   <% @medicine.each do |med| %>
@@ -199,7 +211,7 @@ li {
   <% end %>
 </div>
 </div>
-
+</div>
 
 <!-- close the "tab-content div" -->
 </div>
