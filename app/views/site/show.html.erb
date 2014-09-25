@@ -3,6 +3,21 @@ div {
   text-align: center;
 }
 
+.list-group-item {
+  height: 50px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+li {
+  text-align: center;
+}
+
+.well {
+  padding: 0;
+  width: 100%;
+}
+
 .circle {
   line-height: 0;   /* remove line-height */
   display: inline-block;  /* circle wraps image */
@@ -16,18 +31,31 @@ div {
 }
 </style>
 <!-- left sidebar -->
-<div class="col-md-2" style="height: 1000px; border: 1px solid #ccc;">
+<div class="col-md-2" style ="border: 1px solid #ccc;">
 
-<% if @userLevel === 1 %>
+<% if @userLevel >= 0 %>
    <div class="circle"><img height="50" width="50" style="margin-top: 13px;" src="https://www.nanamee.com/upload/images/29728/29728_p.jpg"></div>
 <% elsif @userLevel === 2%>
   <div class="circle"><img height="50" width="50"  style="margin-top: 13px;" src="https://www.nanamee.com/upload/images/29605/29605_p.jpg"></div>
 <% end %>
 <h2>  <%= @user.name  %></h2>
+      <h3>Level: <%= @userLevel %><h3>
+      <h4>Science <%= @user.science  %> </h4>
+      <h4>Medicine <%= @user.medicine  %> </h4>
+      <h4>Technology <%= @user.technology  %> </h4>
+      <h4>Art <%= @user.art  %> </h4>
+      <h4>Movies <%= @user.movies %> </h4>
 <a href="/logout">Logout</a><br>
         ART SCORE FOR THE USER:   <%= @user.art %>
-        Your level is: <%= @userLevel %>
+        
+        <h2>Scoreboard</h2>
+        <ol>
+        <% @scoreboard.each do |u| %>
 
+        <li><%= u.name  %>
+        <span class="badge"><%= u.score %></span></li>
+        <% end %> 
+        </ol>   
 </div>
 
 <!-- begin displaying categories -->
@@ -45,8 +73,9 @@ div {
 
 
 <div class='commentdiv1' style="display: none;">
+  <ul class="list-group">
     <% tech.comments.each do |com| %>
-      <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+      <div class="well well-sm"><% uid = com.user_id %><% usr = User.find(uid) %> <h3><%= usr.name  %>   <%= com.content %></h3></div>
     <% end %>
   <% @article = tech %>
 
@@ -54,8 +83,7 @@ div {
 </div>
 
   <% end %>
-</div>
-<% end %>   
+</div>  
 <div style="border: 1px solid #ccc; text-align: center;">
   <h3 style="border: 3px solid black;">ART!!!</h3>
   <% @art.each do |a| %>
@@ -64,11 +92,13 @@ div {
   <button class='commentbutton1'>click to view/hide comments</button>
 
   <div class='commentdiv1' style="display: none;">
+    <ul class="list-group">
   <% a.comments.each do |com| %>
-            <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+            <li class="list-group-item"><% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></li>
 
 
       <% end %>
+    </ul>
       <% @article = a %>
 
       <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
@@ -83,13 +113,15 @@ div {
       <button class='commentbutton1'>click to view/hide comments</button>
 
   <div class='commentdiv1' style="display: none;">
+    <ul class="list-group">
   <% a.comments.each do |com| %>
-            <p>    <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>  <%= com.content %></p>
+            <li class="list-group-item"><% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>  <%= com.content %></li>
 
             <p> <%= com.inspect  %> </p>
             <p> <%= com %>
 
       <% end %>
+    </ul>
       <% @article = a %>
 
       <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
@@ -107,11 +139,13 @@ div {
       <button class='commentbutton1'>click to view/hide comments</button>
 
   <div class='commentdiv1' style="display: none;">
+    <ul class="list-group">
   <% a.comments.each do |com| %>
-            <p>    <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+            <li class="list-group-item"><% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></li>
 
 
       <% end %>
+    </ul>
       <% @article = a %>
 
       <%= render :partial => "comments/form", :locals => {:parent => @article, :comment => @article.comments.new} %>
@@ -128,8 +162,9 @@ div {
 <button class='commentbutton1'>click to view/hide comments</button>
 
 <div class='commentdiv1' style="display: none;">
+  <ul class="list-group">
     <% med.comments.each do |com| %>
-      <p> <% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></p>
+      <li class="list-group-item"><% uid = com.user_id %><% usr = User.find(uid) %> <h1><%= usr.name  %></h1>   <%= com.content %></li>
     <% end %>
   <% @article = med %>
 

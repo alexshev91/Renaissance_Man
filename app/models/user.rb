@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   end
 
   def score
-  	(self.technology + self.science + self.medicine + self.art)
+  	(self.technology + self.science + self.medicine + self.art + self.movies)
   end
 
 end
